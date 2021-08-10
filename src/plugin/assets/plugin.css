@@ -1,6 +1,6 @@
 @import "./reset.css";
 
-.app {
-  background-color: red;
+.plugin {
+  background-color: pink;
   height: 100%;
 }

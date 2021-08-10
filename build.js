@@ -45,8 +45,7 @@ async function compileUi() {
   const TEMPLATE_CODE_KEY = "/*__INLINE_CODE__*/";
   const TEMPLATE_CSS_KEY = "/*__INLINE_CSS__*/";
 
-  const UI_PATH = join("src", "ui");
-  let htmlText = await fs.readFile(join(UI_PATH, "ui.html"), {
+  let htmlText = await fs.readFile(join("src", "ui.html"), {
     encoding: "utf-8",
   });
 
@@ -56,9 +55,12 @@ async function compileUi() {
     bundle: true,
     sourcemap: isProduction ? false : "inline",
     minify: isProduction ? true : false,
-    entryPoints: [join(UI_PATH, "ui.tsx")],
+    entryPoints: [join("src", "ui.tsx")],
     loader: {
       ".css": "css",
+      ".svg": "dataurl",
+      ".png": "dataurl",
+      ".jpg": "dataurl",
     },
     outfile: uiCodeFilename,
     write: false,
